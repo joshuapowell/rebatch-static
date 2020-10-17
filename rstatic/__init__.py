@@ -17,3 +17,25 @@ See the License for the specific language governing permission and limitations
 under the License.
 """
 
+
+import logging
+import flask
+
+"""System Logging.
+
+System logging enables us to retain useful activity within the system in
+server logs. Log messages are written to the Terminal or Application Runner
+(e.g., Supervisor) server logs.
+
+Below sets up the `basicConfig` which opens a stream that allows us to add
+formatted log messages to the root logger.
+
+@param (object) logger
+    Provides the ability to write directly to the logger with the info(),
+    warning(), error(), and critical() methods
+
+See the official Python::logging documentation for more Information
+https://docs.python.org/2/library/logging.html
+"""
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
