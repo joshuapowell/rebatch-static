@@ -20,11 +20,13 @@ under the License.
 
 from rstatic import application
 
+
 def test_config():
 
     assert not application.Application(
         name=__name__
     ).app.testing
+
     assert application.Application(
         name=__name__,
         environment="testing"

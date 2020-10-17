@@ -29,6 +29,7 @@ class Application(object):
 
     def __init__(self, name, environment="default", ):
         """Application Constructor.
+
         :param (class) self
             The representation of the instantiated Class Instance
         :param (str) name
