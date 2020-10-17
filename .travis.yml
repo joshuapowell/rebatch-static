@@ -1,26 +1,26 @@
 language:
-  - python
+- python
 python:
-  - "2.7"
-  # - "3.4"    # version 3.4 not compatible with test suite
-  - "3.5"
-  - "3.6"      # current default Python on Travis CI
-  - "3.7"
-  - "3.8"
-  - "3.8-dev"  # 3.8 development branch
-  - "nightly"  # nightly build
+- '2.7'
+- '3.5'
+- '3.6'
+- '3.7'
+- '3.8'
+- 3.8-dev
+- nightly
 os:
-  - linux
+- linux
 services:
-  - postgresql
+- postgresql
 install:
-  - pip install -r ./requirements/release.txt
+- pip install -r ./requirements/release.txt
 script:
-  - tox
+- tox
 deploy:
   provider: pypi
-  username: "__token__"
-  password: "pypi-$PYPI_TOKEN_PASSWORD"
+  username: __token__
+  password:
+    secure: dG5gpKjoKcayLa7JPi/KTR82GGGeobggivbTF5+ik9BGzpdtwK7yyKQwp5kn3zvMNt1/sRtFSX7ZiJuQsKMgi+6kf909BPPLsQYrI1JuvQa5I44766vfjFGA8wD96jdjbN45G72j8lt9cNjD5NapuGHNyLsvOH6rqrw5ULyNDQoeRLo2XUoEZsVMhmEv4DZCI2G4nBlSXGNSzbYuAaS/uxWjP8GGYF5q0vy82eaSToYKA9kBNvBu++Vo5g3s81blK/jNGRiajH/cF1v9kbVymh+sHQ+d7SKhc6aHX2mCjPlgBXvdGDpdpRtGzsKPaO4YA35h5z38I6I2FUcEAiE8kuI11q/QHXUYNWMNEsU9LVjd8s+HGljG8ru0zMuC7RCmFzwqeMC2jaz9FyhthwMCrWALbzpR5ComHOwbnh5JKxtid2+cZ2zeVEFGhEQdiWI3z2DlARjo99WZmEX2lpoHgGNG8kSuFGFc8K6C4tvjj8i/xQf9W7a0TWC0fTDkYbSQyHYeVJJ5MDgm7T6/ZZS9wVZIKcqMxwM/enJiP/uhoyrX3d+j0guVsps1uuJFQIuPRk9G/irkyxgkIvpPfkrTDxeWLBh7yoZNEvQUgGBGOV1/UCDQtSTRZuRnyRC9IIYGFMPkUGs6FST0MOovjRcsKHxVLKloio8sknV+QP6mZVI=
   on:
     branch: master
     tags: true
