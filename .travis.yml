@@ -14,10 +14,12 @@ os:
 services:
   - postgresql
 install:
-  - pip install -r requirements/release.txt
+  - pip install -r ./requirements/release.txt
 script:
   - tox
 deploy:
   provider: pypi
   username: "__token__"
   password: $pypi_token
+  on:
+    branch: master
