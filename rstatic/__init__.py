@@ -63,7 +63,7 @@ server.
 See the official Freezer documentation for more information on usage
 http://pythonhosted.org/Frozen-Flask/
 """
-cube = Freezer()
+freeze = Freezer()
 
 """Create Application shortcut for development purposes.
 """

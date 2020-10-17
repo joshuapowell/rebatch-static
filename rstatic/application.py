@@ -20,6 +20,7 @@ under the License.
 
 import os
 
+from . import freeze
 from . import flask
 from . import logger
 from . import pages
@@ -59,4 +60,72 @@ class Application(object):
         logger.info('Loading environment variables from configuration file')
         self.app.config.from_json(config_)
 
+        """Setup Markdown page processing.
+        """
+        page.init_app(self.app)
+
+        """Create static pages from generated pages.
+        """
+        freeze.init_app(self.app)
+
+        self.generate_pages(app)
+
+        if 'build' in environment:
+            freeze.freeze()
+
         logger.info('rStatic exited with 0.')
+
+    def generate_pages(self, app):
+        """Generate site pages.
+        
+        Create an index and other pages from the `pages` directory.
+        
+        :param (class) self
+            The representation of the instantiated Class Instance
+        :param (str) app
+            The application object to attach the routes to
+        """
+        logger.info('rStatic is generating static index and user-named pages')
+
+        @app.route('/', methods=['GET'])
+        def core_index_get():
+            """Index page.
+            
+            :return (object) render_template
+                A dynamically rendered HTML page.
+            """
+
+            page = pages.get_or_404('index')
+
+            template = page.meta.get('template', 'page.html')
+
+            return render_template(template, page=page)
+
+        @app.route('/<path:path>/', methods=['GET'])
+        def core_page_get(path):
+            """Dynamically routed (you-name-it) pages.
+            
+            :return (object) render_template
+                A dynamically rendered HTML page.
+            """
+
+            page = pages.get_or_404(path)
+
+            template = page.meta.get('template', 'page.html')
+
+            return render_template(template, page=page)
+
+        @freeze.register_generator
+        def core_page_get():
+            """URL Generator.
+            
+            Freeze pages from these routes when building static pages to the
+            static `build` directory.
+            
+            See official Frozen Flask documentation for more information.
+            http://pythonhosted.org/Frozen-Flask/#url-generators
+            """
+            for page in pages:
+                logger.info('rStatic is creating static page for %s',
+                            page['path'])
+                yield {'path': page['path']}
