@@ -22,6 +22,7 @@ import os
 
 from . import flask
 from . import logger
+from . import pages
 
 
 class Application(object):

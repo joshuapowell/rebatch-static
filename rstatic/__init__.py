@@ -20,6 +20,8 @@ under the License.
 
 import logging
 import flask
+from flask_frozen import Freezer
+from flask_flatpages import FlatPages
 
 """System Logging.
 
@@ -41,6 +43,30 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
+"""Compile Markdown files and HTML files into a static site.
+
+Flask-FlatPages provides a collection of pages to your Flask application. Pages
+are built from "flat" text files as opposed to a relational database.
+
+See the official FlatPages documentation for more information on usage
+http://flask-flatpages.readthedocs.io/en/latest/
+"""
+pages = FlatPages()
+
+
+"""Freezer takes our "FlatPages" from above and generates a full static site.
+
+Frozen-Flask freezes a Flask application into a set of static files. The result
+can be hosted without any server-side software other than a traditional web
+server.
+
+See the official Freezer documentation for more information on usage
+http://pythonhosted.org/Frozen-Flask/
+"""
+cube = Freezer()
+
+"""Create Application shortcut for development purposes.
+"""
 def create_application(environment="default"):
     """Production Application Runner."""
     from . import application
