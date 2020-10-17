@@ -15,8 +15,8 @@ services:
   - postgresql
 install:
   - pip install -r requirements/release.txt
-  - 
 script:
-  - tox --result-json=./logs/log-$( date '+%F_%H:%M:%S' ).json
+  #- tox --result-json=./logs/log-$( date '+%F_%H:%M:%S' ).json
+  - tox
   - python setup.py sdist bdist_wheel
   - twine upload --repository testpypi dist/*
