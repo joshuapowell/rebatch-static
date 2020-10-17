@@ -65,8 +65,7 @@ http://pythonhosted.org/Frozen-Flask/
 """
 freeze = Freezer()
 
-"""Create Application shortcut for development purposes.
-"""
+
 def create_application(environment="default"):
     """Production Application Runner."""
     from . import application

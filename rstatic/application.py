@@ -62,7 +62,7 @@ class Application(object):
 
         """Setup Markdown page processing.
         """
-        page.init_app(self.app)
+        pages.init_app(self.app)
 
         """Create static pages from generated pages.
         """
@@ -77,9 +77,9 @@ class Application(object):
 
     def generate_pages(self, app):
         """Generate site pages.
-        
+
         Create an index and other pages from the `pages` directory.
-        
+
         :param (class) self
             The representation of the instantiated Class Instance
         :param (str) app
@@ -90,11 +90,10 @@ class Application(object):
         @app.route('/', methods=['GET'])
         def core_index_get():
             """Index page.
-            
+
             :return (object) render_template
                 A dynamically rendered HTML page.
             """
-
             page = pages.get_or_404('index')
 
             template = page.meta.get('template', 'page.html')
@@ -104,11 +103,10 @@ class Application(object):
         @app.route('/<path:path>/', methods=['GET'])
         def core_page_get(path):
             """Dynamically routed (you-name-it) pages.
-            
+
             :return (object) render_template
                 A dynamically rendered HTML page.
             """
-
             page = pages.get_or_404(path)
 
             template = page.meta.get('template', 'page.html')
@@ -118,10 +116,10 @@ class Application(object):
         @freeze.register_generator
         def core_page_get():
             """URL Generator.
-            
+
             Freeze pages from these routes when building static pages to the
             static `build` directory.
-            
+
             See official Frozen Flask documentation for more information.
             http://pythonhosted.org/Frozen-Flask/#url-generators
             """
