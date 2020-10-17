@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Rebatch Static Site Generator.
+"""rStatic (Rebatch Static Site Generator).
 
 Copyright (c) 2020 Joshua Powell. All rights reserved.
 
