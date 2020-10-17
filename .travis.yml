@@ -23,3 +23,4 @@ deploy:
   password: $pypi_token
   on:
     branch: master
+    tags: true
