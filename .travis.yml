@@ -14,7 +14,9 @@ os:
 services:
   - postgresql
 install:
-  - pip install flask
-  - pip install tox
+  - pip install -r requirements/release.txt
+  - 
 script:
   - tox --result-json=./logs/log-$( date '+%F_%H:%M:%S' ).json
+  - python setup.py sdist bdist_wheel
+  - twine upload --repository testpypi dist/*

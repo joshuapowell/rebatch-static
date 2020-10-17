@@ -46,10 +46,10 @@ def create_application(environment="default"):
     from . import application
 
     """Instantiate the Application
-    
+
     Setup the basic Application class in order to instantiate the rest of
     the Application
-    
+
     @param (str) name
         The name of the Application
     @param (str) envioronment
