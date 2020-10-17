@@ -22,11 +22,11 @@ from setuptools import setup
 """
 
 setup(
-    name='rebatch-static',
+    name='rstatic',
     version='0.0.1',
     author='Joshua Powell',
     description='Open-source static site generator.',
-    url='https://rebatch.io/static',
+    url='https://rebatch.io/rstatic',
     packages=find_packages(),
     include_package_data=True,
     zip_safe = False,
