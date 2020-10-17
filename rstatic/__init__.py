@@ -44,7 +44,6 @@ logger = logging.getLogger(__name__)
 def create_application(environment="default"):
     """Production Application Runner."""
     from . import application
-    from . import errors
 
     """Instantiate the Application
     
@@ -60,12 +59,5 @@ def create_application(environment="default"):
         name="__main__",
         environment=environment
     )
-
-    """Instaniate App-level error handling
-    
-    :param object app: Instantiated app object
-    """
-    errors = errors.ErrorHandlers(instance.app)
-    errors.load_errorhandler(instance.app)
 
     return instance.app

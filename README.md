@@ -8,6 +8,6 @@ Before distributing changes to the core please read the LICENSE file.
 ### Starting the Development Server
 
 ```
-FLASK_APP=rstatic:create_application()
+export FLASK_APP=rstatic:create_application\(\)
 flask run
 ```
