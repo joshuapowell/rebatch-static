@@ -39,3 +39,33 @@ https://docs.python.org/2/library/logging.html
 """
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+
+
+def create_application(environment="default"):
+    """Production Application Runner."""
+    from . import application
+    from . import errors
+
+    """Instantiate the Application
+    
+    Setup the basic Application class in order to instantiate the rest of
+    the Application
+    
+    @param (str) name
+        The name of the Application
+    @param (str) envioronment
+        The desired environment configuration to start the application on
+    """
+    instance = application.Application(
+        name="__main__",
+        environment=environment
+    )
+
+    """Instaniate App-level error handling
+    
+    :param object app: Instantiated app object
+    """
+    errors = errors.ErrorHandlers(instance.app)
+    errors.load_errorhandler(instance.app)
+
+    return instance.app
