@@ -1,0 +1,20 @@
+language:
+  - python
+python:
+  - "2.7"
+  # - "3.4"    # version 3.4 not compatible with test suite
+  - "3.5"
+  - "3.6"      # current default Python on Travis CI
+  - "3.7"
+  - "3.8"
+  - "3.8-dev"  # 3.8 development branch
+  - "nightly"  # nightly build
+os:
+  - linux
+services:
+  - postgresql
+install:
+  - pip install flask
+  - pip install tox
+script:
+  - tox --result-json=./logs/log-$( date '+%F_%H:%M:%S' ).json
