@@ -23,7 +23,7 @@ from setuptools import setup
 
 setup(
     name='rstatic',
-    version='0.0.5',
+    version='0.0.6',
     author='Joshua Powell',
     description='Open-source static site generator.',
     url='https://rebatch.io/rstatic',
